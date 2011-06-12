@@ -27,3 +27,17 @@ $image->flip(true); // horizontal
 $image->output();
 //$image->save('2.jpg');
 ```
+
+Filter
+------
+
+```php
+$image = new Q_Image('1.jpg');
+$image->filter(IMG_FILTER_GRAYSCALE);
+// or multiple filters
+$image->filter(array(
+    IMG_FILTER_GRAYSCALE,
+    IMG_FILTER_EMBOSS
+));
+$image->output();
+```

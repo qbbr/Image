@@ -94,6 +94,19 @@ class Q_Image
     }
 
     /**
+     * Filter
+     *
+     * @see http://php.net/manual/en/function.imagefilter.php
+     * @param int|array $filter
+     */
+    public function filter($filter)
+    {
+        $manipulation = new Q_Image_Manipulation_Filter($this->_image);
+
+        $this->_image = $manipulation->addFilter($filter)->getImage();
+    }
+
+    /**
      * Output image to browser
      */
     public function output()
