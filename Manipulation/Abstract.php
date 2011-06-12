@@ -9,10 +9,33 @@
  */
 abstract class Q_Image_Manipulation_Abstract
 {
-    protected $_file;
+    /**
+     * @var resource
+     */
+    protected $_image;
 
-    public function __construct($file)
+    /**
+     * @param resource $image
+     */
+    public function __construct($image)
     {
-        $this->_file = $file;
+        $this->setImage($image);
+    }
+
+    final public function setImage($image)
+    {
+        $this->_image = $image;
+    }
+
+    abstract protected function make();
+
+    /**
+     * @return resource
+     */
+    final public function getImage()
+    {
+        $this->make();
+
+        return $this->_image;
     }
 }
