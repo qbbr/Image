@@ -13,6 +13,9 @@ class Q_Image
     protected $_imagePath;
     protected $_imageType;
 
+    /**
+     * @param string $imagePath
+     */
     public function __construct($imagePath)
     {
         if (!file_exists($imagePath)) {
@@ -21,11 +24,6 @@ class Q_Image
 
         $this->_imagePath = $imagePath;
         $this->_image = $this->open($imagePath);
-    }
-
-    public function __destruct()
-    {
-        imagedestroy($this->_image);
     }
 
     protected function open($imagePath)
@@ -50,42 +48,6 @@ class Q_Image
         }
     }
 
-    public function output($saveTo = null)
-    {
-        if (null !== $saveTo) {
-            $dir = dirname($saveTo);
-
-            if (!is_dir($dir)) {
-                throw new Q_Image_Exception("Dir ({$cacheDir}) not found");
-            }
-
-            if (!is_writable($dir)) {
-                throw new Q_Image_Exception("Dir ({$dir}) is not writable");
-            }
-
-            if (file_exists($saveTo)) {
-                throw new Q_Image_Exception("File ({$saveTo}) already exist");
-            }
-        }
-
-        switch ($this->_imageType) {
-            case IMAGETYPE_GIF:
-                if (null === $saveTo) $this->setContentType('gif');
-                imagegif($this->_image, $saveTo);
-                break;
-
-            case IMAGETYPE_JPEG:
-                if (null === $saveTo) $this->setContentType('jpeg');
-                imagejpeg($this->_image, $saveTo);
-                break;
-
-            case IMAGETYPE_PNG:
-                if (null === $saveTo) $this->setContentType('png');
-                imagepng($this->_image, $saveTo);
-                break;
-        }
-    }
-
     protected function setContentType($contentType)
     {
         header('Content-type: image/' . $contentType);
@@ -100,6 +62,8 @@ class Q_Image
     }
 
     /**
+     * Rotate image
+     *
      * @param integer $angle
      * @param integer $bgColor
      */
@@ -114,6 +78,8 @@ class Q_Image
     }
 
     /**
+     * Flip image
+     *
      * @param boolean $horizontal
      * @param boolean $vertical
      */
@@ -127,7 +93,62 @@ class Q_Image
             ->getImage();
     }
 
-    public function save()
+    /**
+     * Output image to browser
+     */
+    public function output()
     {
+        switch ($this->_imageType) {
+            case IMAGETYPE_GIF:
+                $this->setContentType('gif');
+                imagegif($this->_image);
+                break;
+
+            case IMAGETYPE_JPEG:
+                $this->setContentType('jpeg');
+                imagejpeg($this->_image);
+                break;
+
+            case IMAGETYPE_PNG:
+                $this->setContentType('png');
+                imagepng($this->_image);
+                break;
+        }
+    }
+
+    /**
+     * Save image to file
+     *
+     * @param string $file
+     */
+    public function save($file)
+    {
+        $dir = dirname($file);
+
+        if (!is_dir($dir)) {
+            throw new Q_Image_Exception("Dir ({$cacheDir}) not found");
+        }
+
+        if (!is_writable($dir)) {
+            throw new Q_Image_Exception("Dir ({$dir}) is not writable");
+        }
+
+        if (file_exists($file)) {
+            throw new Q_Image_Exception("File ({$file}) already exist");
+        }
+
+        switch ($this->_imageType) {
+            case IMAGETYPE_GIF:
+                imagegif($this->_image, $file);
+                break;
+
+            case IMAGETYPE_JPEG:
+                imagejpeg($this->_image, $file);
+                break;
+
+            case IMAGETYPE_PNG:
+                imagepng($this->_image, $file);
+                break;
+        }
     }
 }
