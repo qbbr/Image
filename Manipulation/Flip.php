@@ -39,7 +39,7 @@ class Q_Image_Manipulation_Flip extends Q_Image_Manipulation_Abstract
         $width = imagesx($this->_image);
         $height = imagesy($this->_image);
 
-        $img = imagecreatetruecolor($width, $height);
+        $img = $this->createImage($width, $height);
 
         for ($x = 0; $x < $width; $x++) {
             for ($y = 0; $y < $height; $y++) {

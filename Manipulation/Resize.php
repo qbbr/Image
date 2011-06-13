@@ -73,7 +73,7 @@ class Q_Image_Manipulation_Resize extends Q_Image_Manipulation_Abstract
             }
         }
 
-        $imageNew = imagecreatetruecolor($newWidth, $newHeight);
+        $imageNew = $this->createImage($newWidth, $newHeight);
         imagecopyresampled($imageNew, $this->_image, 0, 0, 0, 0, $newWidth, $newHeight, $imageWidth, $imageHeight);
 
         $this->_image = $imageNew;

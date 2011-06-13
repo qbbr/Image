@@ -81,7 +81,7 @@ class Q_Image_Manipulation_Crop extends Q_Image_Manipulation_Abstract
             $y = ($imageHeight - $this->_height) / 2;
         }
 
-        $imageNew = imagecreatetruecolor($this->_width, $this->_height);
+        $imageNew = $this->createImage($this->_width, $this->_height);
         imagecopy($imageNew, $this->_image, 0, 0, $x, $y, $this->_width, $this->_height);
 
         $this->_image = $imageNew;
