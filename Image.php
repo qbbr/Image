@@ -53,10 +53,6 @@ class Q_Image
         header('Content-type: image/' . $contentType);
     }
 
-    public function resize()
-    {
-    }
-
     public function crop()
     {
     }
@@ -104,6 +100,24 @@ class Q_Image
         $manipulation = new Q_Image_Manipulation_Filter($this->_image);
 
         $this->_image = $manipulation->addFilter($filter)->getImage();
+    }
+
+    /**
+     * Resize
+     *
+     * @param integer $width
+     * @param integer $height
+     * @param integer $mode
+     */
+    public function resize($width, $height, $mode = Q_Image_Manipulation_Resize::NONE)
+    {
+        $manipulation = new Q_Image_Manipulation_Resize($this->_image);
+
+        $this->_image = $manipulation
+            ->setWidth($width)
+            ->setHeight($height)
+            ->setMode($mode)
+            ->getImage();
     }
 
     /**
