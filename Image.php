@@ -53,10 +53,6 @@ class Q_Image
         header('Content-type: image/' . $contentType);
     }
 
-    public function crop()
-    {
-    }
-
     /**
      * Rotate image
      *
@@ -117,6 +113,26 @@ class Q_Image
             ->setWidth($width)
             ->setHeight($height)
             ->setMode($mode)
+            ->getImage();
+    }
+
+    /**
+     * Crop
+     *
+     * @param integer $width
+     * @param integer $height
+     * @param integer $x
+     * @param integer $y
+     */
+    public function crop($width, $height, $x = Q_Image_Manipulation_Crop::CENTER, $y = Q_Image_Manipulation_Crop::CENTER)
+    {
+        $manipulation = new Q_Image_Manipulation_Crop($this->_image);
+
+        $this->_image = $manipulation
+            ->setWidth($width)
+            ->setHeight($height)
+            ->setX($x)
+            ->setY($y)
             ->getImage();
     }
 

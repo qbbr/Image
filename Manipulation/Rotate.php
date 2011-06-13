@@ -14,6 +14,7 @@ class Q_Image_Manipulation_Rotate extends Q_Image_Manipulation_Abstract
 
     /**
      * @param integer $angle
+     * @return Q_Image_Manipulation_Rotate
      */
     public function setAngle($angle)
     {
@@ -24,6 +25,7 @@ class Q_Image_Manipulation_Rotate extends Q_Image_Manipulation_Abstract
 
     /**
      * @param integer $bgColor
+     * @return Q_Image_Manipulation_Rotate
      */
     public function setBgColor($bgColor)
     {

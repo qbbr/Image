@@ -19,6 +19,7 @@ class Q_Image_Manipulation_Resize extends Q_Image_Manipulation_Abstract
 
     /**
      * @param integer $width
+     * @return Q_Image_Manipulation_Resize
      */
     public function setWidth($width)
     {
@@ -29,6 +30,7 @@ class Q_Image_Manipulation_Resize extends Q_Image_Manipulation_Abstract
 
     /**
      * @param integer $height
+     * @return Q_Image_Manipulation_Resize
      */
     public function setHeight($height)
     {
@@ -39,6 +41,7 @@ class Q_Image_Manipulation_Resize extends Q_Image_Manipulation_Abstract
 
     /**
      * @param integer $mode
+     * @return Q_Image_Manipulation_Resize
      */
     public function setMode($mode)
     {

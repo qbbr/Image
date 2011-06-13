@@ -52,3 +52,15 @@ $image->resize(100, 100, Q_Image_Manipulation_Resize::NONE); // do not save prop
 //$image->resize(100, 100, Q_Image_Manipulation_Resize::SMALLER_SIDE); // proportion save
 $image->output();
 ```
+
+Crop
+----
+
+```php
+$image = new Q_Image('1.jpg');
+$image->crop(100, 100); // center center
+//$image->crop(100, 100, Q_Image_Manipulation_Crop::CENTER, Q_Image_Manipulation_Crop::BOTTOM);
+//$image->crop(100, 100, Q_Image_Manipulation_Crop::BOTTOM, Q_Image_Manipulation_Crop::CENTER);
+//$image->crop(100, 100, Q_Image_Manipulation_Crop::BOTTOM, Q_Image_Manipulation_Crop::BOTTOM);
+$image->output();
+```

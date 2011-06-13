@@ -14,6 +14,7 @@ class Q_Image_Manipulation_Flip extends Q_Image_Manipulation_Abstract
 
     /**
      * @param boolean $horizontal
+     * @return Q_Image_Manipulation_Flip
      */
     public function setHorizontal($horizontal)
     {
@@ -24,6 +25,7 @@ class Q_Image_Manipulation_Flip extends Q_Image_Manipulation_Abstract
 
     /**
      * @param boolean $vertical
+     * @return Q_Image_Manipulation_Flip
      */
     public function setVertical($vertical)
     {
