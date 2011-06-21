@@ -43,11 +43,11 @@ class Q_Image_Manipulation_Flip extends Q_Image_Manipulation_Abstract
 
         for ($x = 0; $x < $width; $x++) {
             for ($y = 0; $y < $height; $y++) {
-                if ($this->_horizontal && $this->_vertical) {
+                if (true === $this->_horizontal && true === $this->_vertical) {
                     imagecopy($img, $this->_image, $width - $x - 1, $height - $y - 1, $x, $y, 1, 1);
-                } else if ($this->_horizontal) {
+                } else if (true === $this->_horizontal) {
                     imagecopy($img, $this->_image, $width - $x - 1, $y, $x, $y, 1, 1);
-                } else if ($this->_vertical) {
+                } else if (true === $this->_vertical) {
                     imagecopy($img, $this->_image, $x, $height - $y - 1, $x, $y, 1, 1);
                 }
             }

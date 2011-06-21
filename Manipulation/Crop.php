@@ -69,15 +69,15 @@ class Q_Image_Manipulation_Crop extends Q_Image_Manipulation_Abstract
         $x = $this->_x;
         $y = $this->_y;
 
-        if ($x == self::BOTTOM) {
+        if (self::BOTTOM === $x) {
             $x = $imageWidth - $this->_width;
-        } else if ($x == self::CENTER) {
+        } else if (self::CENTER === $x) {
             $x = ($imageWidth - $this->_width) / 2;
         }
 
-        if ($y == self::BOTTOM) {
+        if (self::BOTTOM === $y) {
             $y = $imageHeight - $this->_height;
-        } else if ($y == self::CENTER) {
+        } else if (self::CENTER === $y) {
             $y = ($imageHeight - $this->_height) / 2;
         }
 

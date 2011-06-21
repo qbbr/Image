@@ -55,13 +55,13 @@ class Q_Image_Manipulation_Resize extends Q_Image_Manipulation_Abstract
         $imageWidth = imagesx($this->_image);
         $imageHeight = imagesy($this->_image);
 
-        if ($this->_mode == self::NONE) {
+        if (self::NONE === $this->_mode) {
             $newWidth = $this->_width;
             $newHeight = $this->_height;
         } else {
             if (
-                ($this->_mode == self::LARGER_SIDE && $imageWidth > $imageHeight)
-                || ($this->_mode == self::SMALLER_SIDE && $imageWidth < $imageHeight)
+                (self::LARGER_SIDE === $this->_mode && $imageWidth > $imageHeight)
+                || (self::SMALLER_SIDE === $this->_mode && $imageWidth < $imageHeight)
                ) {
                 $p = ($this->_width * 100) / $imageWidth;
                 $newWidth = $this->_width;

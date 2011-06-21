@@ -17,6 +17,7 @@ abstract class Q_Image_Manipulation_Abstract
 
     /**
      * @param resource $image
+     * @param integer $imageType
      */
     public function __construct($image, $imageType)
     {
@@ -50,7 +51,7 @@ abstract class Q_Image_Manipulation_Abstract
     {
         $image = imagecreatetruecolor($width, $height);
 
-        if ($this->_imageType == IMAGETYPE_PNG) {
+        if (IMAGETYPE_PNG === $this->_imageType) {
             imagesavealpha($image, true);
             imagealphablending($image, false);
         }
